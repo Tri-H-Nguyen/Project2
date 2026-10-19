@@ -6,12 +6,19 @@ public class TripPoint {
 	private int time;
 	private static ArrayList<TripPoint> trip;
 	
+	/**TripPoint Constructor: initializes the class fields 'time', 'lat', and 'lon'.
+	 * @param time
+	 * @param lat
+	 * @param lon
+	 */
 	public TripPoint(int time, double lat, double lon) {
-		
+		this.lat = lat;
+		this.lon = lon;
+		this.time = time;
 	}
 	
 	public int getTime() {
-		
+		return time;
 	}
 	
 	public double getLat() {
