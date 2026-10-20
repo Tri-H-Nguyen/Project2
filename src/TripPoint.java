@@ -41,8 +41,16 @@ public class TripPoint {
 		return lon;
 	}
 	
+	/**Creates a copy of trip ArrayList in order to stay enumerated.
+	 * 
+	 * @return
+	 */
 	public static ArrayList<TripPoint> getTrip() {
-		
+		ArrayList<TripPoint> copy = new ArrayList<>();	
+		for (TripPoint tp : trip) {
+			copy.add(tp);
+		}
+		return copy;
 	}
 	
 	public static double haversinDistance(TripPoint a, TripPoint b) {
