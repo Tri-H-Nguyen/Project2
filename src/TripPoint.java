@@ -104,8 +104,16 @@ public class TripPoint {
 		return trip.get(trip.size() - 1).getTime() / 60.0;
 	}
 	
+	/**Iterates through all of the list and adds up the haversineDistance between each TripPoints.
+	 * 
+	 * @return
+	 */
 	public static double totalDistance() {
-		return 1.0;
+		double total = 0.0;
+		for (int i = 0; i < trip.size() - 1; i++) {
+			total += haversineDistance(trip.get(i),trip.get(i+1));
+		}
+		return total;
 	}
 	
 	/**Initializes trip ArrayList
