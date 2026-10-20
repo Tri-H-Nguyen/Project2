@@ -33,6 +33,14 @@ public class TripPoint {
 		return lat;
 	}
 	
+	/**getLon() returns the longitude value.
+	 * 
+	 * @return
+	 */
+	public double getLon() {
+		return lon;
+	}
+	
 	public static ArrayList<TripPoint> getTrip() {
 		
 	}
