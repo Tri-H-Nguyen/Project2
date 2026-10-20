@@ -1,4 +1,8 @@
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 public class TripPoint {
 	private double lat;
@@ -54,22 +58,46 @@ public class TripPoint {
 	}
 	
 	public static double haversinDistance(TripPoint a, TripPoint b) {
-		
+
 	}
 	
-	public static double avgSpeed(Trippoint a, TripPoint b) {
-		
+	public static double avgSpeed(TripPoint a, TripPoint b) {
+
 	}
 	
 	public static double totalTime() {
-		
+
 	}
 	
 	public static double totalDistance() {
-		
+
 	}
 	
-	public static void readFile(String filename) {
-		
+	/**Initializes trip ArrayList
+	 * Reads each line of filename and converts the time, lat, and lon into a TripPoint object.
+	 * Adds the created object to the trip ArrayList.
+	 * 
+	 * @param filename
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static void readFile(String filename) throws FileNotFoundException, IOException{
+		trip = new ArrayList<>();
+		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+			String lineToRead = "";
+			String[] temp = new String[3];
+			while((lineToRead = br.readLine()) != null) {
+				try {
+					temp = lineToRead.split(",");
+					trip.add(new TripPoint(Integer.parseInt(temp[0]),Double.parseDouble(temp[1]),
+							Double.parseDouble(temp[2])));
+				}
+				catch (Exception e){
+					continue;
+				}
+			}
+			br.close();
+		}
 	}
+		
 }
