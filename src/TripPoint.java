@@ -75,7 +75,6 @@ public class TripPoint {
 				Math.cos(Math.toRadians(b.getLat())) * hav(deltaLon);
 		
 		//Finding distance by multiplying the radius with the hav inverse of havTheta.
-		System.out.println(havTheta);
 		return 2 * Math.asin(Math.sqrt(havTheta)) * 6371;
 	}
 	
@@ -84,16 +83,24 @@ public class TripPoint {
 		return Math.pow(Math.sin(Math.toRadians(toHav) / 2), 2);
 	}
 	
+	/**Calculates the average speed by taking the distance between the two points
+	 * (using the haversineDistance method) and dividing it by the time in hours.
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static double avgSpeed(TripPoint a, TripPoint b) {
-		
+		double hours = Math.abs(b.getTime() - a.getTime()) / 60.0;
+		return haversineDistance(a, b) / hours;
 	}
 	
 	public static double totalTime() {
-
+		return 1.0;
 	}
 	
 	public static double totalDistance() {
-
+		return 1.0;
 	}
 	
 	/**Initializes trip ArrayList
