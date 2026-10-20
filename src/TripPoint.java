@@ -95,8 +95,13 @@ public class TripPoint {
 		return haversineDistance(a, b) / hours;
 	}
 	
+	/**Finds the last index of time in the trip ArrayList and converts it into hours 
+	 * before returning the value.
+	 * 
+	 * @return
+	 */
 	public static double totalTime() {
-		return 1.0;
+		return trip.get(trip.size() - 1).getTime() / 60.0;
 	}
 	
 	public static double totalDistance() {
