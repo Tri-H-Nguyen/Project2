@@ -17,12 +17,20 @@ public class TripPoint {
 		this.time = time;
 	}
 	
+	/**getTime() returns time. Simple method.
+	 * 
+	 * @return
+	 */
 	public int getTime() {
 		return time;
 	}
 	
+	/**getLat() returns latitude value.
+	 * 
+	 * @return
+	 */
 	public double getLat() {
-		
+		return lat;
 	}
 	
 	public static ArrayList<TripPoint> getTrip() {
