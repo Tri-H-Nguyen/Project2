@@ -1,8 +1,12 @@
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 public class TripPoint {
 	private double lat;
@@ -57,12 +61,31 @@ public class TripPoint {
 		return copy;
 	}
 	
-	public static double haversinDistance(TripPoint a, TripPoint b) {
-
+	/**Uses the haversine formula to find the Distance between two TripPoints
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static double haversineDistance(TripPoint a, TripPoint b) {
+		double deltaLat = b.getLat() - a.getLat();
+		double deltaLon = b.getLon() - a.getLon();
+		//haversine formula to find havdegree
+		double havTheta = hav(deltaLat) + Math.cos(Math.toRadians(a.getLat())) *
+				Math.cos(Math.toRadians(b.getLat())) * hav(deltaLon);
+		
+		//Finding distance by multiplying the radius with the hav inverse of havTheta.
+		System.out.println(havTheta);
+		return 2 * Math.asin(Math.sqrt(havTheta)) * 6371;
+	}
+	
+	//Helper method to solve for the havsine of a value
+	public static double hav(double toHav) {
+		return Math.pow(Math.sin(Math.toRadians(toHav) / 2), 2);
 	}
 	
 	public static double avgSpeed(TripPoint a, TripPoint b) {
-
+		
 	}
 	
 	public static double totalTime() {
@@ -99,5 +122,5 @@ public class TripPoint {
 			br.close();
 		}
 	}
-		
+	
 }
